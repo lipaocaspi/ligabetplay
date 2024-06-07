@@ -10,7 +10,7 @@ import com.paola.ligabetplay.models.Team;
 public class Menu {
     ArrayList<Team> teams = new ArrayList<>();
     ArrayList<Match> matches = new ArrayList<>();
-    int goalNumber;
+    // int goalNumber;
 
     static String mainMenuList = """
         1. Registrar Equipo

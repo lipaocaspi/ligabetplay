@@ -1,7 +1,7 @@
 package com.paola.ligabetplay.models;
 
 public class Person {
-    int id;
+    private int id;
     String name;
     int age;
     String nationality;
