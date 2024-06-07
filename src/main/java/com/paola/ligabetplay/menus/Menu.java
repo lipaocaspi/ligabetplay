@@ -4,12 +4,16 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 import com.paola.ligabetplay.controllers.MenuController;
+import com.paola.ligabetplay.controllers.PlayerController;
+import com.paola.ligabetplay.controllers.TeamController;
 import com.paola.ligabetplay.models.Match;
+import com.paola.ligabetplay.models.Player;
 import com.paola.ligabetplay.models.Team;
 
 public class Menu {
     ArrayList<Team> teams = new ArrayList<>();
     ArrayList<Match> matches = new ArrayList<>();
+    ArrayList<Player> players = new ArrayList<>();
 
     static String mainMenuList = """
         1. Registrar Equipo
@@ -60,7 +64,10 @@ public class Menu {
         """;
 
     public void showMainMenu() {
+        Scanner sc = new Scanner(System.in);
         MenuController menuController = new MenuController();
+        TeamController teamController = new TeamController();
+        PlayerController playerController = new PlayerController();
         int choice;
         // Boolean equalMatches;
         do {
@@ -69,8 +76,23 @@ public class Menu {
             choice = menuController.verifyValue("Ingrese la opción: ");
             switch (choice) {
                 case 1:
+                    teams = teamController.registerTeam();
+                    /* for (int i = 0; i <= teams.size() - 1; i++) {
+                        System.out.println(teams.get(i).getName());
+                    } */
                     break;
                 case 2:
+                    int idTeam;
+                    Boolean notExists = true;
+                    if (teams.isEmpty()) {
+                        System.out.println("No existen equipos registrados");
+                    } else {
+                        do {
+                            idTeam = menuController.verifyValue("Ingrese el código del equipo al que pertenece el jugador: ");
+                            notExists = teamController.searchTeam(idTeam);
+                        } while (notExists);
+                        players = playerController.registerPlayer(players, idTeam);
+                    }
                     break;
                 case 3:
                     showCoachingStaffMenu();
