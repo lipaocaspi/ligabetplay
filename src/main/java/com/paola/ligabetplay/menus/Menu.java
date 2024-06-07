@@ -10,7 +10,6 @@ import com.paola.ligabetplay.models.Team;
 public class Menu {
     ArrayList<Team> teams = new ArrayList<>();
     ArrayList<Match> matches = new ArrayList<>();
-    // int goalNumber;
 
     static String mainMenuList = """
         1. Registrar Equipo
@@ -63,7 +62,7 @@ public class Menu {
     public void showMainMenu() {
         MenuController menuController = new MenuController();
         int choice;
-        Boolean equalMatches;
+        // Boolean equalMatches;
         do {
             System.out.println(title);
             System.out.println(mainMenuList);
@@ -75,18 +74,6 @@ public class Menu {
                     break;
                 case 3:
                     showCoachingStaffMenu();
-                    /* equalMatches = funciones.verificarPartidos(equipos);
-                    if (equipos.isEmpty() || partidos.isEmpty()) {
-                        System.out.println("---");
-                        System.out.println("No se encuentran equipos/partidos registrados");
-                        System.out.println("---");
-                    } else if (equalMatches == false) {
-                        System.out.println("---");
-                        System.out.println("Deben haber el mismo número de partidos registrados para cada equipo");
-                        System.out.println("---");
-                    } else {
-                        showReportsMenu(equipos, partidos);
-                    } */
                     break;
                 case 4:
                     showMedicalStaffMenu();
@@ -125,10 +112,6 @@ public class Menu {
                 case 3:
                     break;
                 case 4:
-                    /* goalNumber = funciones.totalGoles(equipos);
-                    System.out.println("---");
-                    System.out.println("Número de goles anotados en el torneo: " + goalNumber);
-                    System.out.println("---"); */
                     break;
                 default:
                     System.out.println("---");
@@ -177,10 +160,6 @@ public class Menu {
                 case 3:
                     break;
                 case 4:
-                    /* goalNumber = funciones.totalGoles(equipos);
-                    System.out.println("---");
-                    System.out.println("Número de goles anotados en el torneo: " + goalNumber);
-                    System.out.println("---"); */
                     break;
                 case 5:
                     break;
