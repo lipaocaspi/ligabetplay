@@ -3,11 +3,13 @@ package com.paola.ligabetplay.menus;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+import com.paola.ligabetplay.controllers.MedicController;
 import com.paola.ligabetplay.controllers.MenuController;
 import com.paola.ligabetplay.controllers.PlayerController;
 import com.paola.ligabetplay.controllers.TeamController;
 import com.paola.ligabetplay.controllers.TechController;
 import com.paola.ligabetplay.models.Match;
+import com.paola.ligabetplay.models.Medic;
 import com.paola.ligabetplay.models.Player;
 import com.paola.ligabetplay.models.Team;
 import com.paola.ligabetplay.models.Tech;
@@ -17,6 +19,7 @@ public class Menu {
     ArrayList<Match> matches = new ArrayList<>();
     ArrayList<Player> players = new ArrayList<>();
     ArrayList<Tech> techs = new ArrayList<>();
+    ArrayList<Medic> medics = new ArrayList<>();
 
     static String mainMenuList = """
         1. Registrar Equipo
@@ -196,14 +199,38 @@ public class Menu {
     public void showMedicalStaffMenu() {
         Scanner sc = new Scanner(System.in);
         MenuController menuController = new MenuController();
+        TeamController teamController = new TeamController();
+        MedicController medicController = new MedicController();
         int choice;
+        int idTeam;
+        Boolean notExists;
         do {
             System.out.println(medicalStaffMenuList);
             choice = menuController.verifyValue("Ingrese la opción de registro: ");
             switch (choice) {
                 case 1:
+                    notExists = true;
+                    if (teams.isEmpty()) {
+                        System.out.println("No existen equipos registrados");
+                    } else {
+                        do {
+                            idTeam = menuController.verifyValue("Ingrese el código del equipo al que pertenece: ");
+                            notExists = teamController.searchTeam(teams, idTeam);
+                        } while (notExists);
+                        medics = medicController.registerMedic("Fisoterapeuta", idTeam);
+                    }
                     break;
                 case 2:
+                    notExists = true;
+                    if (teams.isEmpty()) {
+                        System.out.println("No existen equipos registrados");
+                    } else {
+                        do {
+                            idTeam = menuController.verifyValue("Ingrese el código del equipo al que pertenece: ");
+                            notExists = teamController.searchTeam(teams, idTeam);
+                        } while (notExists);
+                        medics = medicController.registerMedic("Médico", idTeam);
+                    }
                     break;
                 case 3:
                     break;
