@@ -6,14 +6,17 @@ import java.util.Scanner;
 import com.paola.ligabetplay.controllers.MenuController;
 import com.paola.ligabetplay.controllers.PlayerController;
 import com.paola.ligabetplay.controllers.TeamController;
+import com.paola.ligabetplay.controllers.TechController;
 import com.paola.ligabetplay.models.Match;
 import com.paola.ligabetplay.models.Player;
 import com.paola.ligabetplay.models.Team;
+import com.paola.ligabetplay.models.Tech;
 
 public class Menu {
     ArrayList<Team> teams = new ArrayList<>();
     ArrayList<Match> matches = new ArrayList<>();
     ArrayList<Player> players = new ArrayList<>();
+    ArrayList<Tech> techs = new ArrayList<>();
 
     static String mainMenuList = """
         1. Registrar Equipo
@@ -89,9 +92,9 @@ public class Menu {
                     } else {
                         do {
                             idTeam = menuController.verifyValue("Ingrese el código del equipo al que pertenece el jugador: ");
-                            notExists = teamController.searchTeam(idTeam);
+                            notExists = teamController.searchTeam(teams, idTeam);
                         } while (notExists);
-                        players = playerController.registerPlayer(players, idTeam);
+                        players = playerController.registerPlayer(idTeam);
                     }
                     break;
                 case 3:
@@ -122,16 +125,62 @@ public class Menu {
     public void showCoachingStaffMenu() {
         Scanner sc = new Scanner(System.in);
         MenuController menuController = new MenuController();
+        TeamController teamController = new TeamController();
+        TechController techController = new TechController();
         int choice;
+        int idTeam;
+        Boolean notExists;
         do {
             System.out.println(coachingStaffMenuList);
             choice = menuController.verifyValue("Ingrese la opción de registro: ");
             switch (choice) {
                 case 1:
-                    break;
+                    if (teams.isEmpty()) {
+                        System.out.println("No existen equipos registrados");
+                    } else {
+                        do {
+                            idTeam = menuController.verifyValue("Ingrese el código del equipo al que pertenece: ");
+                            notExists = teamController.searchTeam(teams, idTeam);
+                        } while (notExists);
+                        if (techs.isEmpty()) {
+                            techs = techController.registerTech("Técnico", idTeam);
+                        } else {
+                            for (int i = 0; i <= techs.size() - 1; i++) {
+                                int id = techs.get(i).getIdTeam();
+                                String type = techs.get(i).getTechType();
+                                if (type.equals("Técnico") && id == idTeam) {
+                                    System.out.println("Ya hay un técnico registrado en este equipo");
+                                    break;
+                                } else {
+                                    techs = techController.registerTech("Técnico", idTeam);
+                                }
+                            }
+                        }
+                    }
+                break;
                 case 2:
+                    notExists = true;
+                    if (teams.isEmpty()) {
+                        System.out.println("No existen equipos registrados");
+                    } else {
+                        do {
+                            idTeam = menuController.verifyValue("Ingrese el código del equipo al que pertenece: ");
+                            notExists = teamController.searchTeam(teams, idTeam);
+                        } while (notExists);
+                        techs = techController.registerTech("Asistente Técnico", idTeam);
+                    }
                     break;
                 case 3:
+                    notExists = true;
+                    if (teams.isEmpty()) {
+                        System.out.println("No existen equipos registrados");
+                    } else {
+                        do {
+                            idTeam = menuController.verifyValue("Ingrese el código del equipo al que pertenece: ");
+                            notExists = teamController.searchTeam(teams, idTeam);
+                        } while (notExists);
+                        techs = techController.registerTech("Preparador Físico", idTeam);
+                    }
                     break;
                 case 4:
                     break;

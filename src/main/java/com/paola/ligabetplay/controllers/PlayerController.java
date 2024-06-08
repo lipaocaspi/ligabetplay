@@ -12,7 +12,7 @@ public class PlayerController {
     ArrayList<Player> players = new ArrayList<>();
     ArrayList<Match> matchs = new ArrayList<>();
 
-    public ArrayList<Player> registerPlayer(ArrayList<Player> players, int idTeam) {
+    public ArrayList<Player> registerPlayer(int idTeam) {
         MenuController menuController = new MenuController();
         Scanner sc = new Scanner(System.in);
         Player player = new Player();
@@ -40,9 +40,9 @@ public class PlayerController {
                 }
             } while (exists);
         }
-        System.out.println("Ingrese el nombre del jugador :");
+        System.out.println("Ingrese el nombre del jugador:");
         String name = sc.nextLine();
-        int age = menuController.verifyValue("Ingrese la edad del jugador : ");
+        int age = menuController.verifyValue("Ingrese la edad del jugador: ");
         System.out.println("Ingrese la nacionalidad del jugador: ");
         String nation = sc.nextLine();
         if (players.isEmpty()) {
@@ -54,7 +54,8 @@ public class PlayerController {
                 for (int i = 0; i <= players.size() - 1; i++) {
                     Player p = players.get(i);
                     int shirtPlayer = p.getShirtNumber();
-                    if (shirtPlayer == shirtNumber) {
+                    int idT = p.getIdTeam();
+                    if (shirtPlayer == shirtNumber && idT == idTeam) {
                         System.out.println("---");
                         System.out.println("El dorsal ya se encuentra registrado");
                         System.out.println("---");

@@ -75,7 +75,7 @@ public class TeamController {
         return teams;
     }
 
-    public Boolean searchTeam(int idTeam) {
+    public Boolean searchTeam(ArrayList<Team> teams, int idTeam) {
         Boolean result = true;
         for (int i = 0; i <= teams.size() - 1; i++) {
             Team t = teams.get(i);
