@@ -119,4 +119,29 @@ public class PlayerController {
         }
 		return result;
     }
+
+    public int getPlayer(ArrayList<Player> players, int shirt, int idTeam) {
+        int in = 0;
+        for (int i = 0; i <= players.size() - 1; i++) {
+            int idT = players.get(i).getIdTeam();
+            int shirtN = players.get(i).getShirtNumber();
+            if (idTeam == idT && shirt == shirtN) {
+                in = i;
+                break;
+            }
+        }
+        return in;
+    }
+
+    public void addGoals(ArrayList<Player> players, int iP) {
+        players.get(iP).setGoalsScored(players.get(iP).getGoalsScored() + 1);
+    }
+
+    public void addYellowCards(ArrayList<Player> players, int iP) {
+        players.get(iP).setYellowCards(players.get(iP).getYellowCards() + 1);
+    }
+
+    public void addRedCards(ArrayList<Player> players, int iP) {
+        players.get(iP).setRedCards(players.get(iP).getRedCards() + 1);
+    }
 }
