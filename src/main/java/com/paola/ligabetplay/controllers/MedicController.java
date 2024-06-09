@@ -25,9 +25,9 @@ public class MedicController {
                     Medic t = medics.get(i);
                     int idMedic = t.getId();
                     if (idMedic == id) {
-                        System.out.println("---");
+                        System.out.println("***");
                         System.out.println("El ID ya se encuentra registrado");
-                        System.out.println("---");
+                        System.out.println("***");
                         exists = true;
                         break;
                     } else if (i == medics.size() - 1) {
@@ -38,12 +38,18 @@ public class MedicController {
                 }
             } while (exists);
         }
+        System.out.println("---");
         System.out.println("Ingrese el nombre:");
+        System.out.println("---");
         String name = sc.nextLine();
         int age = menuController.verifyValue("Ingrese la edad: ");
+        System.out.println("---");
         System.out.println("Ingrese la nacionalidad: ");
+        System.out.println("---");
         String nation = sc.nextLine();
+        System.out.println("---");
         System.out.println("Ingrese la profesión:");
+        System.out.println("---");
         String degree = sc.nextLine();
         int experience = menuController.verifyValue("Ingrese los años de experiencia:");
         medic.setName(name);
@@ -54,6 +60,9 @@ public class MedicController {
         medic.setDegree(degree);
         medic.setExperience(experience);
         medics.add(medic);
+        System.out.println("###");
+        System.out.println("REGISTRADO");
+        System.out.println("###");
         /* for (int i = 0; i <= medics.size() - 1; i++) {
             System.out.println(medics.get(i).getMedicType());
             System.out.println(medics.get(i).getIdTeam());

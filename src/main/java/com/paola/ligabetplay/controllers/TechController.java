@@ -25,9 +25,9 @@ public class TechController {
                     Tech t = techs.get(i);
                     int idTech = t.getId();
                     if (idTech == id) {
-                        System.out.println("---");
+                        System.out.println("***");
                         System.out.println("El ID ya se encuentra registrado");
-                        System.out.println("---");
+                        System.out.println("***");
                         exists = true;
                         break;
                     } else if (i == techs.size() - 1) {
@@ -38,10 +38,14 @@ public class TechController {
                 }
             } while (exists);
         }
+        System.out.println("---");
         System.out.println("Ingrese el nombre:");
+        System.out.println("---");
         String name = sc.nextLine();
         int age = menuController.verifyValue("Ingrese la edad: ");
+        System.out.println("---");
         System.out.println("Ingrese la nacionalidad: ");
+        System.out.println("---");
         String nation = sc.nextLine();
         tech.setName(name);
         tech.setAge(age);
@@ -49,6 +53,9 @@ public class TechController {
         tech.setIdTeam(idTeam);
         tech.setTechType(techType);
         techs.add(tech);
+        System.out.println("###");
+        System.out.println("REGISTRADO");
+        System.out.println("###");
         /* for (int i = 0; i <= techs.size() - 1; i++) {
             System.out.println(techs.get(i).getTechType());
             System.out.println(techs.get(i).getIdTeam());

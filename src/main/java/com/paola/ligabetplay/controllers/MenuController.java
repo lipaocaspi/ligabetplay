@@ -16,14 +16,14 @@ public class MenuController {
                 if (valor >= 0) {
                     return valor;
                 } else {
-                    System.out.println("---");
+                    System.out.println("***");
                     System.out.println("Ingrese un valor válido");
-                    System.out.println("---");
+                    System.out.println("***");
                 }
             } catch (InputMismatchException e) {
-                System.out.println("---");
+                System.out.println("***");
                 System.out.println("Tipo de dato incorrecto");
-                System.out.println("---");
+                System.out.println("***");
             }
         }
     }

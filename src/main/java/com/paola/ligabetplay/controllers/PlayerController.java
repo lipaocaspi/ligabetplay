@@ -27,9 +27,9 @@ public class PlayerController {
                     Player p = players.get(i);
                     int idPlayer = p.getId();
                     if (idPlayer == id) {
-                        System.out.println("---");
+                        System.out.println("***");
                         System.out.println("El ID ya se encuentra registrado");
-                        System.out.println("---");
+                        System.out.println("***");
                         exists = true;
                         break;
                     } else if (i == players.size() - 1) {
@@ -40,10 +40,14 @@ public class PlayerController {
                 }
             } while (exists);
         }
+        System.out.println("---");
         System.out.println("Ingrese el nombre del jugador:");
+        System.out.println("---");
         String name = sc.nextLine();
         int age = menuController.verifyValue("Ingrese la edad del jugador: ");
+        System.out.println("---");
         System.out.println("Ingrese la nacionalidad del jugador: ");
+        System.out.println("---");
         String nation = sc.nextLine();
         if (players.isEmpty()) {
             int shirtNumber = menuController.verifyValue("Ingrese el dorsal: ");
@@ -56,9 +60,9 @@ public class PlayerController {
                     int shirtPlayer = p.getShirtNumber();
                     int idT = p.getIdTeam();
                     if (shirtPlayer == shirtNumber && idT == idTeam) {
-                        System.out.println("---");
+                        System.out.println("***");
                         System.out.println("El dorsal ya se encuentra registrado");
-                        System.out.println("---");
+                        System.out.println("***");
                         exists = true;
                         break;
                     } else if (i == players.size() - 1) {
@@ -69,9 +73,13 @@ public class PlayerController {
                 }
             } while (exists);
         }
+        System.out.println("---");
         System.out.println("Ingrese la posición del jugador: ");
+        System.out.println("---");
         String position = sc.nextLine();
+        System.out.println("---");
         System.out.println("Ingrese la fecha de llegada del jugador: ");
+        System.out.println("---");
         String arrival = sc.nextLine();
         player.setName(name);
         player.setAge(age);
@@ -83,10 +91,32 @@ public class PlayerController {
         player.setYellowCards(0);
         player.setRedCards(0);
         players.add(player);
+        System.out.println("###");
+        System.out.println("JUGADOR REGISTRADO");
+        System.out.println("###");
         /* for (int i = 0; i <= players.size() - 1; i++) {
             System.out.println(players.get(i).getShirtNumber());
             System.out.println(players.get(i).getIdTeam());
         } */
         return players;
+    }
+
+    public Boolean searchPlayer(ArrayList<Player> players, int shirt, int idTeam) {
+        Boolean result = true;
+        for (int i = 0; i <= players.size() - 1; i++) {
+            Player p = players.get(i);
+            int id = p.getIdTeam();
+            int shirtN = p.getShirtNumber();
+            if (idTeam == id && shirt == shirtN) {
+                result = false;
+                break;
+            }
+            else if (i == teams.size() - 1) {
+                System.out.println("***");
+                System.out.println("No se encontró jugador con ese dorsal");
+                System.out.println("***");
+            }
+        }
+		return result;
     }
 }

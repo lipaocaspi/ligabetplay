@@ -19,7 +19,9 @@ public class TeamController {
         Boolean exists = false;
         if (teams.isEmpty()) {
             int id = menuController.verifyValue("Ingrese el código del equipo: ");
+            System.out.println("---");
             System.out.println("Ingrese el nombre del equipo: ");
+            System.out.println("---");
             String name = sc.nextLine();
             team.setId(id);
             team.setName(name);
@@ -32,9 +34,9 @@ public class TeamController {
             team.setGoalsAgainst(0);
             team.setTotalPoints(0);
             teams.add(team);
-            System.out.println("---");
-            System.out.println("Equipo registrado");
-            System.out.println("---");
+            System.out.println("###");
+            System.out.println("EQUIPO REGISTRADO");
+            System.out.println("###");
         } else {
             do {
                 int id = menuController.verifyValue("Ingrese el código del equipo: ");
@@ -42,9 +44,9 @@ public class TeamController {
                     Team t = teams.get(i);
                     int idTeam = t.getId();
                     if (idTeam == id) {
-                        System.out.println("---");
+                        System.out.println("***");
                         System.out.println("El código ya se encuentra registrado");
-                        System.out.println("---");
+                        System.out.println("***");
                         exists = true;
                         break;
                     } else if (i == teams.size() - 1) {
@@ -63,9 +65,9 @@ public class TeamController {
                         team.setGoalsAgainst(0);
                         team.setTotalPoints(0);
                         teams.add(team);
-                        System.out.println("---");
-                        System.out.println("Equipo registrado");
-                        System.out.println("---");
+                        System.out.println("###");
+                        System.out.println("EQUIPO REGISTRADO");
+                        System.out.println("###");
                         exists = true;
                         break;
                     }
@@ -85,9 +87,41 @@ public class TeamController {
                 break;
             }
             else if (i == teams.size() - 1) {
+                System.out.println("***");
                 System.out.println("No se encontró equipo registrado con ese código");
+                System.out.println("***");
             }
         }
 		return result;
+    }
+
+    public int checkTeam(ArrayList<Team> teams, int teamNumber, String name, Match match) {
+        int in = 0;
+        for (int i = 0; i <= teams.size() - 1; i++) {
+            Team team = teams.get(i);
+            String teamName = team.getName();
+            if (teamName.equals(name)) {
+                if (teamNumber == 1) {
+                    match.setTeamOne(name);
+                    in = team.getId();
+                } else if (match.getTeamOne().equals(name)) {
+                    System.out.println("***");
+                    System.out.println("Un equipo no puede enfrentarse consigo mismo");
+                    System.out.println("***");
+                    in = -1;
+                } else {
+                    match.setTeamTwo(name);
+                    in = team.getId();
+                }
+                break;
+            } else if (i == teams.size() - 1) {
+                System.out.println("***");
+                System.out.println("El equipo no se encuentra registrado");
+                System.out.println("***");
+                in = -1;
+                break;
+            }
+        }
+        return in;
     }
 }
