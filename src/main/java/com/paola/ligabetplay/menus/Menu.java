@@ -279,17 +279,22 @@ public class Menu {
         Scanner sc = new Scanner(System.in);
         MenuController menuController = new MenuController();
         TeamController teamController = new TeamController();
-        int choice;int idTeam;
+        PlayerController playerController = new PlayerController();
+        int choice;
+        int idTeam;
         Boolean notExists;
         do {
             System.out.println(reportsMenuList);
             choice = menuController.verifyValue("Ingrese la opción de reporte: ");
             switch (choice) {
                 case 1:
+                    playerController.maxScoredGoals(players);
                     break;
                 case 2:
+                    playerController.maxRedCards(players);
                     break;
                 case 3:
+                    playerController.maxYellowCards(players);
                     break;
                 case 4:
                     do {
@@ -304,6 +309,7 @@ public class Menu {
                     }
                     break;
                 case 5:
+                    teamController.showTable(teams);
                     break;
                 case 6:
                     do {

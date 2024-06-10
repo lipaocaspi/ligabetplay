@@ -1,6 +1,8 @@
 package com.paola.ligabetplay.controllers;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.Scanner;
 
 import com.paola.ligabetplay.models.Match;
@@ -153,5 +155,16 @@ public class TeamController {
             }
         }
         return in;
+    }
+
+    public void showTable(ArrayList<Team> teams) {
+        Comparator<Team> comparator = Comparator.comparing(Team::getTotalPoints).thenComparing(Team::getGoalsScored);
+        Collections.sort(teams, comparator.reversed());
+        System.out.printf("%-5s %-15s %-5s %-5s %-5s %-5s %-5s %-5s %-5s %-5s%n", "Cod", "Nombre", "PJ", "PG", "PP", "PE", "TG", "GA", "GC", "TP");
+        System.out.println("------------------------------------------------------------------------");
+        for (int i = 0; i <= teams.size() - 1; i++) {
+            // System.out.printf("%-5d %-15s %-5d %-5d %-5d %-5d %-5d %-5d %-5d %-5d", teams.get(i).getId(), teams.get(i).getName(), teams.get(i).getPlayedMatches(), teams.get(i).getWonMatches(), teams.get(i).getLostMatches(), teams.get(i).getTiedMatches(), teams.get(i).getTotalGoals(), teams.get(i).getGoalsScored(), teams.get(i).getGoalsAgainst(), teams.get(i).getTotalPoints());
+            System.out.println(teams.get(i));
+        }
     }
 }

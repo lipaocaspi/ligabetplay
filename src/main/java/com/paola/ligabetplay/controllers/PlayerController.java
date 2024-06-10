@@ -144,4 +144,49 @@ public class PlayerController {
     public void addRedCards(ArrayList<Player> players, int iP) {
         players.get(iP).setRedCards(players.get(iP).getRedCards() + 1);
     }
+
+    public void maxScoredGoals(ArrayList<Player> players) {
+        String playerName = "";
+        int refNumber = 0;
+        for (int i = 0; i <= players.size() - 1; i++) {
+            int scoredGoals = players.get(i).getGoalsScored();
+            if (scoredGoals > refNumber) {
+                refNumber = scoredGoals;
+                playerName = players.get(i).getName();
+            }
+        }
+        System.out.println("---");
+        System.out.println("Jugador con más goles anotados: " + playerName);
+        System.out.println("---");
+    }
+
+    public void maxRedCards(ArrayList<Player> players) {
+        String playerName = "";
+        int refNumber = 0;
+        for (int i = 0; i <= players.size() - 1; i++) {
+            int redCards = players.get(i).getRedCards();
+            if (redCards > refNumber) {
+                refNumber = redCards;
+                playerName = players.get(i).getName();
+            }
+        }
+        System.out.println("---");
+        System.out.println("Jugador con más tarjetas rojas: " + playerName);
+        System.out.println("---");
+    }
+
+    public void maxYellowCards(ArrayList<Player> players) {
+        String playerName = "";
+        int refNumber = 0;
+        for (int i = 0; i <= players.size() - 1; i++) {
+            int yellowCards = players.get(i).getYellowCards();
+            if (yellowCards > refNumber) {
+                refNumber = yellowCards;
+                playerName = players.get(i).getName();
+            }
+        }
+        System.out.println("---");
+        System.out.println("Jugador con más tarjetas amarillas: " + playerName);
+        System.out.println("---");
+    }
 }

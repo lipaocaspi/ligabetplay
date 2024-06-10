@@ -106,4 +106,9 @@ public class Team {
     public void setTotalPoints(int totalPoints) {
         this.totalPoints = totalPoints;
     }
+
+    @Override
+    public String toString() {
+        return String.format("%-5d %-15s %-5d %-5d %-5d %-5d %-5d %-5d %-5d %-5d", id, name, playedMatches, wonMatches, lostMatches, tiedMatches, totalGoals, goalsScored, goalsAgainst, totalPoints);
+    }
 }

@@ -60,7 +60,7 @@ public class MatchController {
                     String name = sc.nextLine();
                     i2 = teamController.checkTeam(teams, players, 2, name, match);
                 } while (i2 == -1);
-                if (i2 != 2) {
+                if (i2 != -2) {
                     for (int i = 0; i <= teams.size() - 1; i++) {
                         int id = teams.get(i).getId();
                         if (id == i2) {
