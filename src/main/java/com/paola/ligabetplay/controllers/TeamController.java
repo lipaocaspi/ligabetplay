@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 import com.paola.ligabetplay.models.Match;
+import com.paola.ligabetplay.models.Player;
 import com.paola.ligabetplay.models.Team;
 
 public class TeamController {
@@ -95,23 +96,52 @@ public class TeamController {
 		return result;
     }
 
-    public int checkTeam(ArrayList<Team> teams, int teamNumber, String name, Match match) {
+    public int checkTeam(ArrayList<Team> teams, ArrayList<Player> players, int teamNumber, String name, Match match) {
         int in = 0;
+        int count = 0;
         for (int i = 0; i <= teams.size() - 1; i++) {
             Team team = teams.get(i);
             String teamName = team.getName();
+            in = team.getId();
             if (teamName.equals(name)) {
                 if (teamNumber == 1) {
-                    match.setTeamOne(name);
-                    in = team.getId();
+                    for (int j = 0; j <= players.size() - 1; j++) {
+                        int idT = players.get(j).getIdTeam();
+                        if (idT == in) {
+                            count = count + 1;
+                        }
+                    }
+                    if (count >= 2) {
+                        match.setTeamOne(name);
+                    } else {
+                        System.out.println("***");
+                        System.out.println("No hay suficientes jugadores registrados en el equipo");
+                        System.out.println("***");
+                        in = -2;
+                        break;
+                    }
                 } else if (match.getTeamOne().equals(name)) {
                     System.out.println("***");
                     System.out.println("Un equipo no puede enfrentarse consigo mismo");
                     System.out.println("***");
                     in = -1;
+                    break;
                 } else {
-                    match.setTeamTwo(name);
-                    in = team.getId();
+                    for (int j = 0; j <= players.size() - 1; j++) {
+                        int idT = players.get(j).getIdTeam();
+                        if (idT == in) {
+                            count = count + 1;
+                        }
+                    }
+                    if (count >= 2) {
+                        match.setTeamTwo(name);
+                    } else {
+                        System.out.println("***");
+                        System.out.println("No hay suficientes jugadores registrados en el equipo");
+                        System.out.println("***");
+                        in = -2;
+                        break;
+                    }
                 }
                 break;
             } else if (i == teams.size() - 1) {

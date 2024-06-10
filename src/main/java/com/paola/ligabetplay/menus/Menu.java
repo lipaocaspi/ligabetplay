@@ -55,12 +55,12 @@ public class Menu {
         *******************************
                     REPORTES
         *******************************
-        1. Jugador y los goles anotados
-        2. Jugador y las tarjetas rojas recibidas
-        3. Jugador y las tarjetas amarillas recibidas
+        1. Jugador con más goles anotados
+        2. Jugador con más tarjetas rojas recibidas
+        3. Jugador con más tarjetas amarillas recibidas
         4. Listar jugadores por equipo
         5. Tabla de posiciones del torneo
-        6. Cuerpo técnico
+        6. Cuerpo técnico por equipo
         7. Salir al menú principal
         """;
     
@@ -85,9 +85,6 @@ public class Menu {
             switch (choice) {
                 case 1:
                     teams = teamController.registerTeam();
-                    /* for (int i = 0; i <= teams.size() - 1; i++) {
-                        System.out.println(teams.get(i).getName());
-                    } */
                     break;
                 case 2:
                     int idTeam;
@@ -123,13 +120,7 @@ public class Menu {
                     }
                     break;
                 case 5:
-                    if (teams.size() < 2) {
-                        System.out.println("***");
-                        System.out.println("No existen equipos registrados");
-                        System.out.println("***");
-                    } else {
-                        matches = matchController.registerMatch(players, teams);
-                    }
+                    matches = matchController.registerMatch(players, teams);
                     break;
                 case 6:
                     if (teams.isEmpty()) {
