@@ -163,7 +163,6 @@ public class TeamController {
         System.out.printf("%-5s %-15s %-5s %-5s %-5s %-5s %-5s %-5s %-5s %-5s%n", "Cod", "Nombre", "PJ", "PG", "PP", "PE", "TG", "GA", "GC", "TP");
         System.out.println("------------------------------------------------------------------------");
         for (int i = 0; i <= teams.size() - 1; i++) {
-            // System.out.printf("%-5d %-15s %-5d %-5d %-5d %-5d %-5d %-5d %-5d %-5d", teams.get(i).getId(), teams.get(i).getName(), teams.get(i).getPlayedMatches(), teams.get(i).getWonMatches(), teams.get(i).getLostMatches(), teams.get(i).getTiedMatches(), teams.get(i).getTotalGoals(), teams.get(i).getGoalsScored(), teams.get(i).getGoalsAgainst(), teams.get(i).getTotalPoints());
             System.out.println(teams.get(i));
         }
     }

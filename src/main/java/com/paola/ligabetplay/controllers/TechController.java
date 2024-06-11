@@ -56,10 +56,6 @@ public class TechController {
         System.out.println("###");
         System.out.println("REGISTRADO");
         System.out.println("###");
-        /* for (int i = 0; i <= techs.size() - 1; i++) {
-            System.out.println(techs.get(i).getTechType());
-            System.out.println(techs.get(i).getIdTeam());
-        } */
         return techs;
     }
 }

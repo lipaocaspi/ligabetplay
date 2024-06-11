@@ -63,10 +63,6 @@ public class MedicController {
         System.out.println("###");
         System.out.println("REGISTRADO");
         System.out.println("###");
-        /* for (int i = 0; i <= medics.size() - 1; i++) {
-            System.out.println(medics.get(i).getMedicType());
-            System.out.println(medics.get(i).getIdTeam());
-        } */
         return medics;
     }
 }

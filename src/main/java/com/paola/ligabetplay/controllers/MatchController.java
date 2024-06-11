@@ -175,21 +175,5 @@ public class MatchController {
             T1.setTotalGoals(T1.getTotalGoals() + scoreOne);
             T1.setGoalsAgainst(T1.getGoalsAgainst() + (-1)*difGoals);
         }
-        /* System.out.println(T1.getName());
-        System.out.println("PJ " + T1.getPlayedMatches());
-        System.out.println("PG " + T1.getWonMatches());
-        System.out.println("PP " + T1.getLostMatches());
-        System.out.println("PE " + T1.getTiedMatches());
-        System.out.println("GF " + T1.getGoalsScored());
-        System.out.println("GC " + T1.getGoalsAgainst());
-        System.out.println("TP " + T1.getTotalPoints());
-        System.out.println(T2.getName());
-        System.out.println("PJ " + T2.getPlayedMatches());
-        System.out.println("PG " + T2.getWonMatches());
-        System.out.println("PP " + T2.getLostMatches());
-        System.out.println("PE " + T2.getTiedMatches());
-        System.out.println("GF " + T2.getGoalsScored());
-        System.out.println("GC " + T2.getGoalsAgainst());
-        System.out.println("TP " + T2.getTotalPoints()); */
     }
 }

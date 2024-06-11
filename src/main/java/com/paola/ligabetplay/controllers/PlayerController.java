@@ -94,10 +94,6 @@ public class PlayerController {
         System.out.println("###");
         System.out.println("JUGADOR REGISTRADO");
         System.out.println("###");
-        /* for (int i = 0; i <= players.size() - 1; i++) {
-            System.out.println(players.get(i).getShirtNumber());
-            System.out.println(players.get(i).getIdTeam());
-        } */
         return players;
     }
 
