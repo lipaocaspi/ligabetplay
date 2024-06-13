@@ -20,7 +20,7 @@ public class MatchController {
 
     public ArrayList<Match> registerMatch(ArrayList<Player> players, ArrayList<Team> teams) {
         Scanner sc = new Scanner(System.in);
-        MenuController menuController = new MenuController();
+        InputController inputController = new InputController();
         TeamController teamController = new TeamController();
         PlayerController playerController = new PlayerController();
         if (teams.size() < 2) {
@@ -68,31 +68,31 @@ public class MatchController {
                             break;
                         }
                     }
-                    scoreOne = menuController.verifyValue("Ingrese el número de goles del equipo local: ");
+                    scoreOne = inputController.verifyValue("Ingrese el número de goles del equipo local: ");
                     match.setScoreOne(scoreOne);
                     if (scoreOne != 0) {
                         for (int i = 1; i <= scoreOne; i++) {
                             do {
-                                shirtN = menuController.verifyValue("Ingrese el dorsal del jugador que anotó el gol " + i);
+                                shirtN = inputController.verifyValue("Ingrese el dorsal del jugador que anotó el gol " + i);
                                 notExists = playerController.searchPlayer(players, shirtN, i1);
                             } while (notExists);
                             int iP = playerController.getPlayer(players, shirtN, i1);
                             playerController.addGoals(players, iP);
                         }
                     }
-                    scoreTwo = menuController.verifyValue("Ingrese el número de goles del equipo visitante: ");
+                    scoreTwo = inputController.verifyValue("Ingrese el número de goles del equipo visitante: ");
                     match.setScoreTwo(scoreTwo);
                     if (scoreTwo != 0) {
                         for (int i = 1; i <= scoreTwo; i++) {
                             do {
-                                shirtN = menuController.verifyValue("Ingrese el dorsal del jugador que anotó el gol " + i + ": ");
+                                shirtN = inputController.verifyValue("Ingrese el dorsal del jugador que anotó el gol " + i + ": ");
                                 notExists = playerController.searchPlayer(players, shirtN, i2);
                             } while (notExists);
                             int iP = playerController.getPlayer(players, shirtN, i1);
                             playerController.addGoals(players, iP);
                         }
                     }
-                    yellowCard = menuController.verifyValue("Ingrese el número de tarjetas amarillas: ");
+                    yellowCard = inputController.verifyValue("Ingrese el número de tarjetas amarillas: ");
                     match.setYellowCard(yellowCard);
                     if (yellowCard != 0) {
                         System.out.println("LOCAL: ");
@@ -100,18 +100,18 @@ public class MatchController {
                         System.out.println("VISITANTE: ");
                         System.out.println("ID: " + teams.get(iE2).getId() + " NOMBRE: " + teams.get(iE2).getName());
                         do {
-                            code = menuController.verifyValue("Ingrese el código del equipo que cometió la falta: ");
+                            code = inputController.verifyValue("Ingrese el código del equipo que cometió la falta: ");
                         } while (code != i1 && code != i2);
                         for (int i = 1; i <= yellowCard; i++) {
                             do {
-                                shirtN = menuController.verifyValue("Ingrese el dorsal del jugador que cometió la falta: ");
+                                shirtN = inputController.verifyValue("Ingrese el dorsal del jugador que cometió la falta: ");
                                 notExists = playerController.searchPlayer(players, shirtN, code);
                             } while (notExists);
                             int iP = playerController.getPlayer(players, shirtN, code);
                             playerController.addYellowCards(players, iP);
                         } 
                     }
-                    redCard = menuController.verifyValue("Ingrese el número de tarjetas rojas: ");
+                    redCard = inputController.verifyValue("Ingrese el número de tarjetas rojas: ");
                     match.setRedCard(redCard);
                     if (redCard != 0) {
                         System.out.println("LOCAL: ");
@@ -119,11 +119,11 @@ public class MatchController {
                         System.out.println("VISITANTE: ");
                         System.out.println("ID: " + teams.get(iE2).getId() + " NOMBRE: " + teams.get(iE2).getName());
                         do {
-                            code = menuController.verifyValue("Ingrese el código del equipo que cometió la falta: ");
+                            code = inputController.verifyValue("Ingrese el código del equipo que cometió la falta: ");
                         } while (code != i1 && code != i2);
                         for (int i = 1; i <= redCard; i++) {
                             do {
-                                shirtN = menuController.verifyValue("Ingrese el dorsal del jugador que cometió la falta: ");
+                                shirtN = inputController.verifyValue("Ingrese el dorsal del jugador que cometió la falta: ");
                                 notExists = playerController.searchPlayer(players, shirtN, code);
                             } while (notExists);
                             int iP = playerController.getPlayer(players, shirtN, code);

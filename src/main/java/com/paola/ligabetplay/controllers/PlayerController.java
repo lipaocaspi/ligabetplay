@@ -13,16 +13,16 @@ public class PlayerController {
     ArrayList<Match> matchs = new ArrayList<>();
 
     public ArrayList<Player> registerPlayer(int idTeam) {
-        MenuController menuController = new MenuController();
+        InputController inputController = new InputController();
         Scanner sc = new Scanner(System.in);
         Player player = new Player();
         Boolean exists = true;
         if (players.isEmpty()) {
-            int id = menuController.verifyValue("Ingrese el ID del jugador: ");
+            int id = inputController.verifyValue("Ingrese el ID del jugador: ");
             player.setId(id);
         } else {
             do {
-                int id = menuController.verifyValue("Ingrese el ID del jugador: ");
+                int id = inputController.verifyValue("Ingrese el ID del jugador: ");
                 for (int i = 0; i <= players.size() - 1; i++) {
                     Player p = players.get(i);
                     int idPlayer = p.getId();
@@ -44,17 +44,17 @@ public class PlayerController {
         System.out.println("Ingrese el nombre del jugador:");
         System.out.println("---");
         String name = sc.nextLine();
-        int age = menuController.verifyValue("Ingrese la edad del jugador: ");
+        int age = inputController.verifyValue("Ingrese la edad del jugador: ");
         System.out.println("---");
         System.out.println("Ingrese la nacionalidad del jugador: ");
         System.out.println("---");
         String nation = sc.nextLine();
         if (players.isEmpty()) {
-            int shirtNumber = menuController.verifyValue("Ingrese el dorsal: ");
+            int shirtNumber = inputController.verifyValue("Ingrese el dorsal: ");
             player.setShirtNumber(shirtNumber);
         } else {
             do {
-                int shirtNumber = menuController.verifyValue("Ingrese el dorsal: ");
+                int shirtNumber = inputController.verifyValue("Ingrese el dorsal: ");
                 for (int i = 0; i <= players.size() - 1; i++) {
                     Player p = players.get(i);
                     int shirtPlayer = p.getShirtNumber();

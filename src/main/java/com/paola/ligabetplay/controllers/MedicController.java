@@ -11,16 +11,16 @@ public class MedicController {
     ArrayList<Medic> medics = new ArrayList<>();
 
     public ArrayList<Medic> registerMedic(String medicType, int idTeam) {
-        MenuController menuController = new MenuController();
+        InputController inputController = new InputController();
         Scanner sc = new Scanner(System.in);
         Medic medic = new Medic();
         Boolean exists = true;
         if (medics.isEmpty()) {
-            int id = menuController.verifyValue("Ingrese el ID: ");
+            int id = inputController.verifyValue("Ingrese el ID: ");
             medic.setId(id);
         } else {
             do {
-                int id = menuController.verifyValue("Ingrese el ID: ");
+                int id = inputController.verifyValue("Ingrese el ID: ");
                 for (int i = 0; i <= medics.size() - 1; i++) {
                     Medic t = medics.get(i);
                     int idMedic = t.getId();
@@ -42,7 +42,7 @@ public class MedicController {
         System.out.println("Ingrese el nombre:");
         System.out.println("---");
         String name = sc.nextLine();
-        int age = menuController.verifyValue("Ingrese la edad: ");
+        int age = inputController.verifyValue("Ingrese la edad: ");
         System.out.println("---");
         System.out.println("Ingrese la nacionalidad: ");
         System.out.println("---");
@@ -51,7 +51,7 @@ public class MedicController {
         System.out.println("Ingrese la profesión:");
         System.out.println("---");
         String degree = sc.nextLine();
-        int experience = menuController.verifyValue("Ingrese los años de experiencia:");
+        int experience = inputController.verifyValue("Ingrese los años de experiencia:");
         medic.setName(name);
         medic.setAge(age);
         medic.setNationality(nation);

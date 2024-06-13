@@ -11,16 +11,16 @@ public class TechController {
     ArrayList<Tech> techs = new ArrayList<>();
 
     public ArrayList<Tech> registerTech(String techType, int idTeam) {
-        MenuController menuController = new MenuController();
+        InputController inputController = new InputController();
         Scanner sc = new Scanner(System.in);
         Tech tech = new Tech();
         Boolean exists = true;
         if (techs.isEmpty()) {
-            int id = menuController.verifyValue("Ingrese el ID: ");
+            int id = inputController.verifyValue("Ingrese el ID: ");
             tech.setId(id);
         } else {
             do {
-                int id = menuController.verifyValue("Ingrese el ID: ");
+                int id = inputController.verifyValue("Ingrese el ID: ");
                 for (int i = 0; i <= techs.size() - 1; i++) {
                     Tech t = techs.get(i);
                     int idTech = t.getId();
@@ -42,7 +42,7 @@ public class TechController {
         System.out.println("Ingrese el nombre:");
         System.out.println("---");
         String name = sc.nextLine();
-        int age = menuController.verifyValue("Ingrese la edad: ");
+        int age = inputController.verifyValue("Ingrese la edad: ");
         System.out.println("---");
         System.out.println("Ingrese la nacionalidad: ");
         System.out.println("---");

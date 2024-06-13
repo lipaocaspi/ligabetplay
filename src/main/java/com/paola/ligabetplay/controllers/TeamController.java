@@ -16,12 +16,12 @@ public class TeamController {
     int scoreTwo;
 
     public ArrayList<Team> registerTeam() {
-        MenuController menuController = new MenuController();
+        InputController inputController = new InputController();
         Scanner sc = new Scanner(System.in);
         Team team = new Team();
         Boolean exists = false;
         if (teams.isEmpty()) {
-            int id = menuController.verifyValue("Ingrese el código del equipo: ");
+            int id = inputController.verifyValue("Ingrese el código del equipo: ");
             System.out.println("---");
             System.out.println("Ingrese el nombre del equipo: ");
             System.out.println("---");
@@ -42,7 +42,7 @@ public class TeamController {
             System.out.println("###");
         } else {
             do {
-                int id = menuController.verifyValue("Ingrese el código del equipo: ");
+                int id = inputController.verifyValue("Ingrese el código del equipo: ");
                 for (int i = 0; i <= teams.size() - 1; i++) {
                     Team t = teams.get(i);
                     int idTeam = t.getId();
